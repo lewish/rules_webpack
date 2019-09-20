@@ -12,6 +12,7 @@ bazel build example:app.bundle.js
 
 ## Next steps
 
+- Upgrade to latest rules_nodejs, and all other bazel deps (currently tested running on bazel 0.29.1)
 - Copy the node_modules linking behaviour in rollup_bundle so we can remove the webpack BazelResolverPlugin
 - Move code to data from the bundler runfiles (blocked on above)
 - Package up these rules into a macro so they are easier to use
