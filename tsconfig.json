@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "rules_webpack/*": ["*"]
+    },
     "module": "commonjs",
     "noImplicitAny": true,
     "noImplicitThis": true,

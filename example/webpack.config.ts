@@ -1,19 +1,18 @@
-import { BazelResolverPlugin, run } from "rules_webpack/webpack";
+import {
+  BazelResolverPlugin,
+  IBazelWebpackOptions
+} from "rules_webpack/webpack";
 import * as path from "path";
 
-// Notable things:
-// - Don't set the output, must be set on the command line
-// - We user require.resolve so that webpack can find these modules in a Bazel context
-
-run(options => ({
-  mode: options.mode,
-  entry: [options.entry],
+module.exports = (env: any, argv: IBazelWebpackOptions) => ({
+  mode: argv.mode,
+  entry: [argv.entry],
   output: {
-    path: path.dirname(path.resolve(options.output)),
-    filename: path.basename(options.output)
+    path: path.dirname(path.resolve(argv.output)),
+    filename: path.basename(argv.output)
   },
   optimization: {
-    minimize: options.mode === "production"
+    minimize: argv.mode === "production"
   },
   watchOptions: {
     ignored: [/node_modules/]
@@ -58,4 +57,4 @@ run(options => ({
       }
     ]
   }
-}));
+});
