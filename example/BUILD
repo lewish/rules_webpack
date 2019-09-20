@@ -74,7 +74,7 @@ webpack_bundle(
     bundler = ":bundler",
     data = ["//:tsconfig.json"],
     # TODO: Use a proper label e.g. ":index.ts" like new nodejs_binary rules.
-    entry = "rules_webpack/example/index",
+    entry = "index.tsx",
     outputs = [
         "app.bundle.js",
     ],
