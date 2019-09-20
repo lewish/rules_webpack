@@ -1,16 +1,9 @@
-import {
-  BazelResolverPlugin,
-  IBazelWebpackConfiguration,
-  run
-} from "rules_webpack/webpack";
+import { BazelResolverPlugin, run } from "rules_webpack/webpack";
 import * as path from "path";
-import * as webpack from "webpack";
 
 // Notable things:
-// - We don't set the output, must be set on the command line
-// - We have seperate CSS loaders for our code and modules
+// - Don't set the output, must be set on the command line
 // - We user require.resolve so that webpack can find these modules in a Bazel context
-// - The tsconfig paths plugin fixes file resolution in a bazel context (dfco/)
 
 run(options => ({
   mode: options.mode,
@@ -39,7 +32,9 @@ run(options => ({
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json", ".css"],
-    plugins: [new BazelResolverPlugin()],
+    // This makes sure we can resolve modules in bazel, but only works in runfiles.
+    // TODO: Copy rollup_bundle node_modules linking example so we can remove this.
+    plugins: [new BazelResolverPlugin()]
   },
   module: {
     rules: [

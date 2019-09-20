@@ -19,6 +19,7 @@ ts_library(
 )
 
 # The "bundler" is thought of as an application, and has it's own deps.
+# This effectively webpack + webpack.config.js.
 ts_library(
     name = "bundler_lib",
     srcs = ["webpack.ts"],
