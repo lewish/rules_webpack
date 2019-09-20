@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@bazel/typescript": "^0.32.2",
+    "@types/node": "^12.7.5",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@types/webpack": "^4.39.1",
+    "@types/webpack-dev-server": "^3.1.7",
+    "@types/yargs": "^13.0.2",
+    "css-loader": "^3.2.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "style-loader": "^1.0.0",
+    "typescript": "^3.6.3",
+    "umd-compat-loader": "^2.1.2",
+    "webpack": "^4.40.2",
+    "webpack-dev-server": "^3.8.1",
+    "yargs": "^14.0.0"
+  }
+}
