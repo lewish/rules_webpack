@@ -15,3 +15,24 @@ ts_library(
         "@npm//yargs",
     ],
 )
+
+
+load("@build_bazel_rules_nodejs//:defs.bzl", "nodejs_binary")
+
+# TODO: Package these up in a macro?
+
+nodejs_binary(
+    name = "devserver",
+    data = [
+        ":webpack"
+    ],
+    entry_point = ":devserver.ts"
+)
+
+nodejs_binary(
+    name = "bundle",
+    data = [
+        ":webpack"
+    ],
+    entry_point = ":bundle.ts"
+)

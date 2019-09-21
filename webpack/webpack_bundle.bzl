@@ -10,6 +10,10 @@ _ATTRS = {
         mandatory = True,
         allow_single_file = [".js", ".ts", ".jsx", ".tsx"],
     ),
+    "config": attr.label(
+        mandatory = True,
+        allow_single_file = [".js", ".ts"],
+    ),
     "deps": attr.label_list(
         aspects = [collect_node_modules_aspect, sources_aspect],
     ),
@@ -31,6 +35,7 @@ def _bundle_impl(ctx):
     # TODO: this path should be execroot-relative
     # so it shouldn't need the ctx.workspace_name prefix
     args.add("--entry={entry}".format(entry = ctx.workspace_name + "/" + _no_ext(ctx.file.entry)))
+    args.add("--config={config}".format(config = ctx.workspace_name + "/" + _no_ext(ctx.file.config)))
     ctx.actions.run(
         inputs = ctx.files.data,
         tools = [ctx.executable.bundler],
