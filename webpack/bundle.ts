@@ -2,6 +2,10 @@ import * as webpack from "webpack";
 
 import { getArgv, getConfig } from "rules_webpack/webpack";
 
+import * as fs from "fs";
+
+console.log(fs.readdirSync("./node_modules"));
+
 const argv = getArgv();
 const config = getConfig(argv);
 

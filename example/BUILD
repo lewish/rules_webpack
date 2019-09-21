@@ -58,24 +58,13 @@ nodejs_binary(
     ],
 )
 
-nodejs_binary(
-    name = "bundler",
-    data = [
-        ":config",
-        # TODO: This shouldn't be in the runfiles, but a data input to the following rule.
-        ":example"
-    ],
-    entry_point = "//webpack:bundle.ts",
-)
-
 load("//webpack:webpack_bundle.bzl", "webpack_bundle")
 
 webpack_bundle(
     name = "bundle",
-    bundler = ":bundler",
     config = ":webpack.config.ts",
+    deps = [":example", ":config"],
     data = ["//:tsconfig.json"],
-    # TODO: Use a proper label e.g. ":index.ts" like new nodejs_binary rules.
     entry = ":index.tsx",
     outputs = [
         "app.bundle.js",

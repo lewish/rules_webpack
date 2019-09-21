@@ -33,7 +33,7 @@ module.exports = (env: any, argv: IBazelWebpackOptions) => ({
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json", ".css"],
     // This makes sure we can resolve modules in bazel, but only works in runfiles.
     // TODO: Copy rollup_bundle node_modules linking example so we can remove this.
-    plugins: [new BazelResolverPlugin()]
+    // plugins: [new BazelResolverPlugin()]
   },
   module: {
     rules: [
